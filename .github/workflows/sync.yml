@@ -2,18 +2,19 @@ name: AtCoder Sync
 
 on:
   schedule:
-    - cron: '0 0 * * *' # 毎日日本時間の朝9時に実行
-  workflow_dispatch: # 手動で実行したい時用
+    - cron: '0 0 * * *' # 毎日朝9時に実行
+  workflow_dispatch: # 手動実行用
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: AtCoder Sync
-        # ここを修正しました！
-        uses: asf79/atcoder-sync@v2
+      - name: AtCoder GitHub Sync
+        # 新しい「住所」です。現在も活発にメンテナンスされています。
+        uses: garasubo/atcoder-github-sync@v2
         with:
-          atcoder-user-id: 'sam_el' 
-          github-token: ${{ secrets.GH_TOKEN }}
-          # 初めて動かす時は、下の「#」を消すと過去の全ACを持ってこれます
-          crawl-all: true
+          # 注意：ここは「atcoder_username」とアンダーバーを使います
+          atcoder_username: 'sam_el'
+          github_token: ${{ secrets.GH_TOKEN }}
+          # 過去分を全部持ってくるなら下を有効にする
+          # crawl_all: true
