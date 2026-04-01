@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: AtCoder Sync
-        uses: k-pollen/atcoder-problems-sync-action@v2
+        uses: asf79/atcoder-problems-sync-action@v2
         with:
           atcoder-user-id: 'sam_el'
           github-token: ${{ secrets.GH_TOKEN }}
