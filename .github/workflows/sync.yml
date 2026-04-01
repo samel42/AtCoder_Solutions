@@ -1,8 +1,22 @@
-name: Test Action
-on: [workflow_dispatch]
+name: AtCoder Sync
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
 jobs:
-  test:
+  sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4 # GitHub公式のAction
-      - run: echo "Success!"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: AtCoder GitHub Sync
+        # バージョン指定を @v2 ではなく @master (最新) にしてみます
+        uses: garasubo/atcoder-github-sync@master
+        with:
+          atcoder_username: 'sam_el'
+          github_token: ${{ secrets.GH_TOKEN }}
+          # 初回なので過去分を全部持ってくる設定をONにします
+          crawl_all: true
