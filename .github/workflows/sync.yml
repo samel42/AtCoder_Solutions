@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: AtCoder Sync
-        uses: asf79/atcoder-problems-sync-action@v2
+        # ここを修正しました！
+        uses: asf79/atcoder-sync@v2
         with:
-          atcoder-user-id: 'sam_el'
+          atcoder-user-id: 'sam_el' 
           github-token: ${{ secrets.GH_TOKEN }}
-          # 過去の分を全部持ってくるなら以下をコメントアウト解除
-          # crawl-all: true
+          # 初めて動かす時は、下の「#」を消すと過去の全ACを持ってこれます
+          crawl-all: true
