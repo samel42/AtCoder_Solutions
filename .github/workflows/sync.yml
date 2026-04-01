@@ -1,20 +1,8 @@
-name: AtCoder Sync
-
-on:
-  schedule:
-    - cron: '0 0 * * *' # 毎日朝9時に実行
-  workflow_dispatch: # 手動実行用
-
+name: Test Action
+on: [workflow_dispatch]
 jobs:
-  sync:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: AtCoder GitHub Sync
-        # 新しい「住所」です。現在も活発にメンテナンスされています。
-        uses: garasubo/atcoder-github-sync@v2
-        with:
-          # 注意：ここは「atcoder_username」とアンダーバーを使います
-          atcoder_username: 'sam_el'
-          github_token: ${{ secrets.GH_TOKEN }}
-          # 過去分を全部持ってくるなら下を有効にする
-          # crawl_all: true
+      - uses: actions/checkout@v4 # GitHub公式のAction
+      - run: echo "Success!"
